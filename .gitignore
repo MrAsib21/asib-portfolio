@@ -1,0 +1,27 @@
+cat > .gitignore <<'EOF'
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+build/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Deployment settings
+.vercel/
+
+# macOS files
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# TypeScript
+next-env.d.ts
+EOF*.swp

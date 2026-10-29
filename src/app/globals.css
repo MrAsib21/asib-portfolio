@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Developer / Code Terminal Dark Theme */
+  --color-paper: #0D1117;          /* Primary dark canvas (GitHub/VS Code slate-black) */
+  --color-desk: #161B22;           /* Desk surface (deep editor surface) */
+  --color-ink: #E6EDF3;            /* Primary foreground text (crisp readable editor white) */
+  --color-vermilion: #FF5555;      /* Primary accent (coding bright red/coral) */
+  --color-highlighter: #50FA7B;    /* Neon accent (terminal green) */
+  --color-muted-olive: #8B949E;    /* Secondary/comment text (muted slate gray) */
+  --color-desk-dark: #0A0D12;      /* Deeper desk shadow/crevices */
+  --color-desk-shadow: rgba(0, 0, 0, 0.65);
+  --color-paper-card: #161B22;     /* Card surface (editor elevated background) */
+  --color-border-subtle: #30363D;  /* Editor border (subtle wireframe line) */
+}
+
+/* Base styles */
+html {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-instrument), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* High contrast keyboard focus accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-vermilion) !important;
+  outline-offset: 3px !important;
+  border-radius: 2px;
+}
+
+/* Selection color matching dark neon/terminal palette */
+::selection {
+  background-color: rgba(255, 85, 85, 0.35);
+  color: #FFFFFF;
+}
+
+/* Tactile grid matrix background */
+.bg-paper-texture {
+  background-color: var(--color-paper);
+  background-image: 
+    radial-gradient(rgba(139, 148, 158, 0.12) 1px, transparent 1px),
+    linear-gradient(to right, rgba(48, 54, 61, 0.2) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(48, 54, 61, 0.2) 1px, transparent 1px);
+  background-size: 24px 24px, 48px 48px, 48px 48px;
+}
+
+/* Kraft desk surface texture - midnight workstation edition */
+.bg-desk-surface {
+  background-color: var(--color-desk);
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(33, 38, 45, 0.6) 0%, transparent 100%);
+  background-size: 24px 24px, 100% 100%;
+}
+
+/* Torn / deckled edge approximation using subtle clip paths */
+.torn-edge-bottom {
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% calc(100% - 6px),
+    96% 100%,
+    92% calc(100% - 4px),
+    88% 100%,
+    84% calc(100% - 5px),
+    80% 100%,
+    76% calc(100% - 3px),
+    72% 100%,
+    68% calc(100% - 6px),
+    64% 100%,
+    60% calc(100% - 4px),
+    56% 100%,
+    52% calc(100% - 5px),
+    48% 100%,
+    44% calc(100% - 3px),
+    40% 100%,
+    36% calc(100% - 6px),
+    32% 100%,
+    28% calc(100% - 4px),
+    24% 100%,
+    20% calc(100% - 5px),
+    16% 100%,
+    12% calc(100% - 3px),
+    8% 100%,
+    4% calc(100% - 6px),
+    0% 100%
+  );
+}
+
+/* Dark code terminal lined notebook */
+.lined-paper {
+  background-color: #161B22;
+  background-image: linear-gradient(rgba(230, 237, 243, 0.06) 1px, transparent 1px);
+  background-size: 100% 32px;
+  line-height: 32px;
+}
+
+/* Red / glowing margin line on dark notebook */
+.lined-paper-margin {
+  border-left: 2px solid rgba(255, 85, 85, 0.4);
+  padding-left: 1.5rem;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
